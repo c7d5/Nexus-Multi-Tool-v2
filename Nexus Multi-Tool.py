@@ -127,36 +127,9 @@ class IntelVault:
 # 
 # ------------------------------------------------------------
 
-async def investigate(target):
 
-    collector = PassiveCollector()
-    geo = GeoIntel()
-    analyzer = ThreatAnalyzer()
-    vault = IntelVault()
 
-    print(f"{Colors.YELLOW}[+] Initializing Nexus passive reconnaissance...{Colors.END}")
-
-    domains = await collector.enumerate_domains(target)
-
-    for d in domains:
-        print(f"{Colors.GREEN}[DISCOVERED]{Colors.END} {d}")
-        vault.store(d)
-
-    print(f"\n{Colors.YELLOW}[+] Running social footprint analysis...{Colors.END}")
-
-    socials = await collector.social_scrape(target)
-
-    for platform, url in socials.items():
-        print(f"{Colors.CYAN}[SOCIAL]{Colors.END} {platform:<10} -> {url}")
-
-    print(f"\n{Colors.YELLOW}[+] Correlating metadata...{Colors.END}")
-
-    fake_ip = "185.34.12.77"
-
-    geo_data = geo.triangulate(fake_ip)
-
-    print(f"""
-    GEO ESTIMATE
+   
     -------------------------
     LATITUDE   : {geo_data['lat']}
     LONGITUDE  : {geo_data['lon']}
