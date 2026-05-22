@@ -2,3 +2,4 @@
 
 hello friends, this is an OSINT reverse engineered and made better from the outdated system.
 install with git
+after you've done this enjoy ur script.
